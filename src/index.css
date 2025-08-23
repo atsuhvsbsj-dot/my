@@ -1,0 +1,255 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Soft Yet Strong Color Palette - Shreya Singh
+All colors MUST be HSL. This palette is designed for a modern yet timeless feel.
+*/
+
+@layer base {
+  :root {
+    /* Background System */
+    --background: 210 20% 98%;        /* Porcelain White #F8F9FA */
+    --foreground: 0 0% 17%;           /* Deep Charcoal #2C2C2C */
+
+    /* Card System */
+    --card: 0 0% 100%;                /* White #FFFFFF */
+    --card-foreground: 0 0% 17%;      /* Deep Charcoal #2C2C2C */
+
+    /* Primary System - Steel Teal */
+    --primary: 180 30% 40%;           /* Steel Teal #468189 */
+    --primary-foreground: 0 0% 100%;  /* White #FFFFFF */
+    --primary-glow: 180 30% 50%;      /* Lighter Steel Teal */
+    --primary-muted: 180 30% 90%;     /* Very Light Steel Teal */
+
+    /* Accent System - Muted Rose Gold */
+    --accent: 0 20% 80%;               /* Muted Rose Gold #D6A4A4 */
+    --accent-foreground: 0 0% 100%;    /* White #FFFFFF */
+
+    /* Secondary Text */
+    --secondary: 0 0% 44%;            /* Stone Gray #707070 */
+    --secondary-foreground: 0 0% 100%; /* White #FFFFFF */
+
+    /* Footer Background */
+    --footer-background: 210 20% 10%;  /* Ink Blue #1C1F2A */
+    --footer-foreground: 0 0% 90%;     /* Champagne Cream #F5EBDD */
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -2px hsl(var(--primary) / 0.2);
+    --shadow-glow: 0 0 30px hsl(var(--primary) / 0.4);
+    --shadow-card: 0 8px 25px -5px hsl(var(--foreground) / 0.1);
+
+    /* Animation Variables */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 1rem;
+
+    --sidebar-background: 210 20% 10%; /* Ink Blue #1C1F2A */
+    --sidebar-foreground: 0 0% 90%;    /* Champagne Cream #F5EBDD */
+  }
+
+  .dark {
+    /* Dark Mode */
+    --background: 210 20% 10%;        /* Dark Ink Blue */
+    --foreground: 0 0% 90%;           /* Champagne Cream #F5EBDD */
+
+    --card: 0 0% 17%;                  /* Deep Charcoal #2C2C2C */
+    --card-foreground: 0 0% 90%;       /* Champagne Cream #F5EBDD */
+
+    --primary: 180 30% 50%;            /* Lighter Steel Teal */
+    --primary-foreground: 210 20% 10%; /* Dark Ink Blue */
+    
+    --accent: 0 20% 70%;               /* Lighter Muted Rose Gold */
+    --accent-foreground: 0 0% 90%;     /* Champagne Cream #F5EBDD */
+
+    /* Dark Mode Shadows */
+    --shadow-soft: 0 4px 20px -2px hsl(var(--primary) / 0.2);
+    --shadow-glow: 0 0 30px hsl(var(--primary) / 0.4);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Poppins', 'Inter', sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  /* Typography Hierarchy */
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl font-bold leading-tight;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl font-semibold leading-tight;
+  }
+  
+  h4 {
+    @apply text-xl md:text-2xl font-semibold;
+  }
+  
+  p {
+    @apply text-base md:text-lg leading-relaxed;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Mobile optimization */
+  @media (max-width: 768px) {
+    .container {
+      @apply px-4;
+    }
+    
+    h1 {
+      @apply text-3xl leading-tight;
+    }
+    
+    h2 {
+      @apply text-2xl leading-tight;
+    }
+    
+    h3 {
+      @apply text-xl leading-tight;
+    }
+    
+    p {
+      @apply text-sm leading-relaxed;
+    }
+    
+    .btn-responsive {
+      @apply text-sm px-4 py-2;
+    }
+  }
+
+  /* Better spacing on smaller screens */
+  @media (max-width: 640px) {
+    .section-spacing {
+      @apply py-12;
+    }
+    
+    .card-grid {
+      @apply grid-cols-1 gap-4;
+    }
+  }
+}
+
+@layer components {
+  /* Hero Gradient Background */
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+
+  /* Glass morphism effect */
+  .glass {
+    backdrop-filter: blur(10px);
+    background: hsl(var(--card) / 0.8);
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+
+  /* Shadow utilities */
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Animation utilities */
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+
+  /* Enhanced Hover animations */
+  .hover-lift {
+    transition: var(--transition-smooth);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .hover-scale {
+    transition: var(--transition-smooth);
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.4);
+    transform: translateY(-2px);
+  }
+
+  .hover-float:hover {
+    animation: float 0.3s ease-out;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+
+  /* Button variants */
+  .btn-gradient {
+    background: var(--gradient-primary);
+    color: hsl(var(--primary-foreground));
+    border: none;
+    transition: var(--transition-smooth);
+  }
+
+  .btn-gradient:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    border: 2px solid hsl(var(--primary));
+    color: hsl(var(--primary));
+    transition: var(--transition-smooth);
+  }
+
+  .btn-ghost:hover {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    transform: translateY(-2px);
+  }
+}
