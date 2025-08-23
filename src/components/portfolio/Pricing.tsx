@@ -8,51 +8,50 @@ const Pricing = () => {
   const packages = [
     {
       name: "Starter",
-      price: "₹4,999",
-      originalPrice: "₹6,999",
-      description: "Perfect for small businesses and landing pages",
+      price: "$150 – $250",
+      description: "Portfolio, personal site, event/mini‑business site",
       features: [
-        "Responsive Landing Page",
-        "Contact Form Integration",
-        "Basic SEO Optimization",
-        "Mobile Responsive Design",
-        "1 Month Support",
-        "Google Analytics Setup"
+        "Landing Page: $50",
+        "Responsive Design + SEO Setup: $40",
+        "Basic SEO Optimization $30",
+        "2D Animations / Interactions: $30",
+        "Basic Contact Form + DB (MySQL/MongoDB): $40",
+        "1 Month Support"
       ],
       popular: false,
       color: "border-primary/20"
     },
     {
-      name: "Full Website",
-      price: "₹14,999",
-      originalPrice: "₹19,999",
-      description: "Complete web solution for growing businesses",
+      name: "Advanced Projects",
+      price: "$450 – $850",
+      description: "SaaS MVPs, growing startup",
       features: [
-        "Frontend + Backend Development",
+        "Multi‑page site (up to 8–10 pages)",
         "Database Integration",
-        "User Authentication System",
-        "Admin Panel",
-        "Payment Gateway Integration",
-        "3 Months Support",
-        "Performance Optimization",
-        "Security Implementation"
+        "User Authentication (Login / Signup / OAuth)",
+        "Admin Dashboard (CRUD with MySQL/MongoDB)",
+        "Payment Gateway Integration (Stripe/Razorpay)",
+        "Performance Optimization + On‑page SEO",
+        "2D/3D Animations & Motion Design",
+        "Security Implementation",
+        "3 Months Support"
       ],
       popular: true,
       color: "border-primary ring-2 ring-primary/20"
     },
     {
       name: "Custom",
-      price: "Contact",
+      price: "Startup Collaboration",
       originalPrice: null,
-      description: "Tailored solutions for enterprise needs",
+      description: "companies offering job roles or equity‑based collaboration.",
       features: [
         "Custom Feature Development",
         "Scalable Architecture",
-        "Advanced Integrations",
+        "Branding + animations for premium UX",
         "Performance Optimization",
         "24/7 Priority Support",
         "Ongoing Maintenance",
-        "Team Training",
+        "Team guidance (interns/junior devs)",
         "Documentation"
       ],
       popular: false,

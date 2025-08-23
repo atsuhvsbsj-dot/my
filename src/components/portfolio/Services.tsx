@@ -111,20 +111,20 @@ const Services = () => {
   const packages = [
     {
       name: "Starter",
-      price: "₹4,999",
+      price: "$150 – $250",
       description: "Perfect for small businesses",
-      features: ["Landing Page", "Contact Form", "Mobile Responsive", "Basic SEO"],
+      features: ["Landing Page", "Contact Form", "2D Animations", "Basic SEO"],
     },
     {
-      name: "Full Website",
-      price: "₹14,999",
+      name: "Advanced Projects",
+      price: "$450 – $850",
       description: "Complete web solution",
-      features: ["Frontend + Backend", "Database Integration", "User Authentication", "Admin Panel"],
+      features: ["Multi‑page site (up to 8–10 pages)", "Database Integration", "User Authentication", "Admin Panel"],
       popular: true,
     },
     {
       name: "Custom",
-      price: "Contact",
+      price: "Startup Collaboration",
       description: "Tailored to your needs",
       features: ["Custom Features", "Ongoing Support", "Performance Optimization", "Scalable Architecture"],
     },
