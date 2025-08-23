@@ -81,7 +81,7 @@ Portfolio site for African startup → helped raise Series A funding
 - 📧 Email: [shreyasingh7297@gmail.com](mailto:shreyasingh7297@gmail.com)  
 - 💼 LinkedIn: [www.linkedin.com/in/shreya-singh-a14868303](#)  
 - 🐙 GitHub: [https://github.com/Shreya-meaw](#)  
-- 🌍 Portfolio: [upcoming](#)  
+- 🌍 Portfolio: [(https://shreyaportfol.netlify.app/](#)  
 
 ---
 
