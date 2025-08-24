@@ -253,3 +253,16 @@ All colors MUST be HSL. This palette is designed for a modern yet timeless feel.
     transform: translateY(-2px);
   }
 }
+
+@layer base {
+  html, body {
+    overflow-x: hidden; /* prevent right side scroll */
+    max-width: 100%;    /* don't allow any element to push width */
+  }
+
+  /* helper class for locking scroll when menu is open */
+  .no-scroll {
+    overflow: hidden;
+    height: 100vh;
+  }
+}

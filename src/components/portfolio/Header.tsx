@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -26,29 +26,37 @@ const Header = () => {
     }
   };
 
+  // ✅ Prevent background scroll when menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+  }, [isOpen]);
+
   return (
     <motion.header
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-white/30 dark:bg-black/30 shadow-md overflow-x-hidden"
+      className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-white/30 dark:bg-black/30 shadow-md"
       role="banner"
     >
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+      <div className="max-w-screen-xl mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
-       <motion.a
-  href="#home"
-  onClick={(e) => {
-    e.preventDefault();
-    scrollToSection("#home");
-  }}
-  whileHover={{ scale: 1.05 }}
-  className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white font-sans uppercase"
-  aria-label="Shreya Singh Portfolio Home"
->
-  Shreya Singh
-</motion.a>
-
+        <motion.a
+          href="#home"
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToSection("#home");
+          }}
+          whileHover={{ scale: 1.05 }}
+          className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white font-sans uppercase"
+          aria-label="Shreya Singh Portfolio Home"
+        >
+          Shreya Singh
+        </motion.a>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8" aria-label="Primary Navigation">
@@ -102,7 +110,7 @@ const Header = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="md:hidden bg-white dark:bg-black/90 py-4 shadow-md"
+          className="md:hidden bg-white dark:bg-black/90 py-4 shadow-md w-full flex flex-col items-center"
           aria-label="Mobile Navigation"
         >
           {navItems.map((item) => (
@@ -115,7 +123,7 @@ const Header = () => {
                 setIsOpen(false);
               }}
               whileTap={{ scale: 0.95 }}
-              className="block py-2 px-4 text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors cursor-pointer"
+              className="block py-2 px-4 text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors cursor-pointer w-full text-center"
             >
               {item.label}
             </motion.a>

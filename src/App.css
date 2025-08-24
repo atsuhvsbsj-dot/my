@@ -1,3 +1,4 @@
+/* Root container */
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -5,19 +6,31 @@
   text-align: center;
 }
 
+/* Responsive padding for smaller screens */
+@media (max-width: 768px) {
+  #root {
+    padding: 1rem;
+  }
+}
+
+/* Logo styling */
 .logo {
   height: 6em;
   padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+  will-change: filter, transform;
+  transition: filter 300ms, transform 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
+  transform: scale(1.05);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+/* Logo spinning animation */
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -33,10 +46,50 @@
   }
 }
 
+/* Card component */
 .card {
   padding: 2em;
 }
 
+@media (max-width: 768px) {
+  .card {
+    padding: 1.5em;
+  }
+}
+
+/* Text links */
 .read-the-docs {
   color: #888;
+  transition: color 0.3s;
+}
+
+.read-the-docs:hover {
+  color: #646cff;
+}
+
+/* Footer adjustments for mobile */
+footer {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+footer nav ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+footer nav ul li {
+  margin-bottom: 0.5rem;
+}
+
+/* Smooth scaling for buttons/icons */
+button,
+a {
+  transition: transform 0.3s, color 0.3s;
+}
+@media (max-width: 640px) {
+  .navbar-item {
+    font-size: 14px; /* Adjust font size */
+    padding: 10px; /* Adjust padding */
+  }
 }
