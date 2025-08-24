@@ -2,7 +2,17 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Send, Upload, Calendar, Shield } from "lucide-react";
+import {
+  Send,
+  Upload,
+  Calendar,
+  ShieldCheck,
+  Zap,
+  MessageCircle,
+  DollarSign,
+  Shield,
+  Rocket,
+} from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -18,26 +28,28 @@ const HireMe = () => {
     email: "",
     phone: "",
     startDate: "",
-    message: ""
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
 
     toast({
       title: "Application Submitted!",
-      description: "Thank you for your interest. I’ll get back to you within 24 hours.",
+      description:
+        "Thank you for your interest. I’ll get back to you within 24 hours.",
     });
 
     setFormData({
@@ -47,20 +59,21 @@ const HireMe = () => {
       email: "",
       phone: "",
       startDate: "",
-      message: ""
+      message: "",
     });
     setIsSubmitting(false);
   };
 
   return (
     <>
-      {/* SVG Wave Divider */}
+      {/* Decorative Wave Divider */}
       <div className="w-full overflow-hidden leading-[0] relative -mt-1">
         <svg
           className="w-full h-[50px] md:h-[60px]"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1000 100"
           preserveAspectRatio="none"
+          role="presentation"
         >
           <path
             fill="#457D84"
@@ -74,6 +87,7 @@ const HireMe = () => {
         className="py-20 bg-gradient-to-b from-muted/30 to-background relative"
       >
         <div className="container mx-auto px-4">
+          {/* Header Section */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -81,15 +95,16 @@ const HireMe = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4">
-              Hire a <span className="text-primary">Frontend Developer</span> &{" "}
-              <span className="text-secondary">Freelance React.js Expert</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <h1 className="text-4xl font-bold mb-4">
+              Hire a{" "}
+              <span className="text-primary">Frontend Developer</span> &{" "}
+              <span className="text-secondary">React.js Expert</span>
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
               Looking for{" "}
               <strong>Next.js / React.js Developer</strong> who delivers{" "}
-              <em>fast, scalable, and SEO-friendly websites</em>? Let’s discuss
-              your project and bring your ideas to life 🚀
+              <em>fast, scalable, and SEO-optimized websites</em>? Let’s
+              collaborate and bring your ideas to life.
             </p>
           </motion.div>
 
@@ -103,8 +118,8 @@ const HireMe = () => {
             >
               <Card className="shadow-xl border border-muted/40 hover:shadow-2xl transition-all">
                 <CardHeader>
-                  <CardTitle className="flex items-center text-lg">
-                    <Send className="mr-2 text-primary" size={24} />
+                  <CardTitle className="flex items-center text-lg md:text-xl">
+                    <Send className="mr-2 text-primary" size={22} aria-hidden />
                     Project Inquiry Form
                   </CardTitle>
                 </CardHeader>
@@ -114,6 +129,7 @@ const HireMe = () => {
                     className="space-y-6"
                     aria-label="Hire Me Form"
                   >
+                    {/* Full Name / Company */}
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
                         <Label htmlFor="fullName">Full Name *</Label>
@@ -139,6 +155,7 @@ const HireMe = () => {
                       </div>
                     </div>
 
+                    {/* Role */}
                     <div>
                       <Label htmlFor="role">Role/Position Offered *</Label>
                       <Input
@@ -152,6 +169,7 @@ const HireMe = () => {
                       />
                     </div>
 
+                    {/* Email / Phone */}
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
                         <Label htmlFor="email">Email *</Label>
@@ -178,6 +196,7 @@ const HireMe = () => {
                       </div>
                     </div>
 
+                    {/* Start Date */}
                     <div>
                       <Label htmlFor="startDate">Preferred Start Date *</Label>
                       <Input
@@ -191,6 +210,7 @@ const HireMe = () => {
                       />
                     </div>
 
+                    {/* Message */}
                     <div>
                       <Label htmlFor="message">Message/Job Description</Label>
                       <Textarea
@@ -209,6 +229,7 @@ const HireMe = () => {
                       <Upload
                         className="mx-auto mb-2 text-muted-foreground"
                         size={32}
+                        aria-hidden
                       />
                       <p className="text-sm text-muted-foreground">
                         Upload Job Description/Document (PDF, DOC)
@@ -220,7 +241,7 @@ const HireMe = () => {
 
                     {/* Security Notice */}
                     <div className="flex items-center space-x-2">
-                      <Shield className="text-success" size={16} />
+                      <ShieldCheck className="text-success" size={16} />
                       <span className="text-sm text-muted-foreground">
                         Protected by reCAPTCHA. Your information is secure.
                       </span>
@@ -237,7 +258,7 @@ const HireMe = () => {
                         <>Submitting...</>
                       ) : (
                         <>
-                          <Send className="mr-2" size={16} />
+                          <Send className="mr-2" size={16} aria-hidden />
                           Submit Application
                         </>
                       )}
@@ -247,7 +268,7 @@ const HireMe = () => {
               </Card>
             </motion.div>
 
-            {/* Quick Contact Info */}
+            {/* Why Hire + Availability */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -255,28 +276,52 @@ const HireMe = () => {
               viewport={{ once: true }}
               className="space-y-8"
             >
-              {/* Why Choose Me */}
+              {/* Why Hire Me */}
               <Card className="gradient-card shadow-lg hover:shadow-xl transition">
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-6">
+                  <h2 className="text-2xl font-bold mb-6">
                     Why Hire Me as Your Developer?
-                  </h3>
+                  </h2>
                   <ul className="space-y-4 text-muted-foreground">
-                    <li>
-                      <strong>⚡ Fast Delivery:</strong> Most projects done in
-                      2–4 weeks.
+                    <li className="flex items-center gap-2">
+                      <Zap size={18} className="text-primary" aria-hidden />
+                      <span>
+                        <strong>Fast Delivery:</strong> Most projects done in
+                        2–4 weeks.
+                      </span>
                     </li>
-                    <li>
-                      <strong>💬 Direct Communication:</strong> Work directly
-                      with me, no middlemen.
+                    <li className="flex items-center gap-2">
+                      <MessageCircle
+                        size={18}
+                        className="text-primary"
+                        aria-hidden
+                      />
+                      <span>
+                        <strong>Direct Communication:</strong> Work directly
+                        with me, no middlemen.
+                      </span>
                     </li>
-                    <li>
-                      <strong>💰 Competitive Rates:</strong> Freelancer-friendly
-                      pricing with high-quality results.
+                    <li className="flex items-center gap-2">
+                      <DollarSign
+                        size={18}
+                        className="text-primary"
+                        aria-hidden
+                      />
+                      <span>
+                        <strong>Competitive Rates:</strong> Freelancer-friendly
+                        pricing with high-quality results.
+                      </span>
                     </li>
-                    <li>
-                      <strong>🔒 Post-Project Support:</strong> Continued
-                      support after completion.
+                    <li className="flex items-center gap-2">
+                      <Shield
+                        size={18}
+                        className="text-primary"
+                        aria-hidden
+                      />
+                      <span>
+                        <strong>Post-Project Support:</strong> Continued support
+                        after completion.
+                      </span>
                     </li>
                   </ul>
                 </CardContent>
@@ -287,7 +332,7 @@ const HireMe = () => {
                 <CardContent className="p-8">
                   <div className="flex items-center mb-4">
                     <Calendar className="mr-2 text-primary" size={20} />
-                    <h3 className="text-xl font-bold">Availability</h3>
+                    <h2 className="text-xl font-bold">Availability</h2>
                   </div>
                   <div className="space-y-2 text-sm">
                     <p>
@@ -305,10 +350,10 @@ const HireMe = () => {
                     </p>
                   </div>
 
-                  <div className="mt-6 p-4 bg-muted rounded-lg text-center">
-                    <p className="text-sm">
-                      <strong>🚀 Limited Slots!</strong> Book your consultation
-                      today.
+                  <div className="mt-6 p-4 bg-muted rounded-lg text-center flex items-center justify-center gap-2">
+                    <Rocket size={18} className="text-primary" />
+                    <p className="text-sm font-semibold">
+                      Limited Slots! Book your consultation today.
                     </p>
                   </div>
                 </CardContent>
