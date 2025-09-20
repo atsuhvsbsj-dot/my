@@ -72,8 +72,8 @@ const Projects = () => {
       problemSolved: "Replaced manual reporting with automated dashboards, saving 20 hours/week of manual work.",
       company: "TechStart Inc.",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop",
-      github: "https://github.com/shreya/techstart-dashboard",
-      demo: "https://dashboard-demo.techstart.com"
+      github: "https://github.com/usergd26/waaa-web/tree/develop",
+      demo: "https://waaa-app-coral.vercel.app/"
     },
     {
       title: "EduLearn Learning Platform",
@@ -83,8 +83,8 @@ const Projects = () => {
       problemSolved: "Optimized database queries and implemented caching, improving page load times by 70%.",
       company: "EduTech Solutions",
       image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop",
-      github: "https://github.com/shreya/edulearn-backend",
-      demo: "https://edulearn-platform.com"
+      github: "https://github.com/WAAA-IT-Solution/collab-web",
+      demo: "https://stellular-twilight-0b29ee.netlify.app/"
     }
   ];
 

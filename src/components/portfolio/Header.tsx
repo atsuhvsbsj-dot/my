@@ -55,7 +55,7 @@ const Header = () => {
           className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white font-sans uppercase"
           aria-label="Shreya Singh Portfolio Home"
         >
-          Shreya Singh
+          {"Shreya Singh"}
         </motion.a>
 
         {/* Desktop Navigation */}

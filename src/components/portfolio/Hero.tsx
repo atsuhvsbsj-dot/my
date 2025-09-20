@@ -53,144 +53,145 @@ const Hero = () => {
 <div className="container mx-auto px-4 py-20 relative z-20 pointer-events-none">
     <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
-            >
-              Hi, I'm{" "}
-              <span className="text-foreground font-extrabold">Shreya</span>
-              <br />
-              <span className="text-primary font-extrabold">Frontend Developer</span>
-              <br className="hidden sm:block" />
-              <span className="sm:hidden"> </span>& <span className="text-secondary font-extrabold">Freelancer</span>
-            </motion.h1>
+<motion.div
+  initial={{ opacity: 0, x: -50 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.8 }}
+  // as="section"
+  id="hero"
+  itemScope
+  itemType="https://schema.org/Person"
+>
+  <motion.h1
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.2, duration: 0.8 }}
+    className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+    itemProp="name"
+  >
+    Hi, I’m{" "}
+    <span className="text-foreground font-extrabold">Shreya</span>
+    <br />
+    <span className="text-primary font-extrabold" itemProp="jobTitle">
+      Frontend Developer
+    </span>
+    <br className="hidden sm:block" />
+    <span className="sm:hidden"> </span>&{" "}
+    <span className="text-secondary font-extrabold">Freelancer</span>
+  </motion.h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-lg font-medium"
-            >
-              I build <span className="text-primary font-semibold">fast</span>, 
-              <span className="text-secondary font-semibold"> beautiful</span>, and 
-              <span className="text-primary font-semibold"> scalable</span> websites for startups and
-              individuals. Let's bring your ideas to life! ✨
-            </motion.p>
+  <motion.p
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.4, duration: 0.8 }}
+    className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-lg font-medium"
+    itemProp="description"
+  >
+    I build <strong className="text-primary font-semibold">fast</strong>, 
+    <strong className="text-secondary font-semibold"> beautiful</strong>, and 
+    <strong className="text-primary font-semibold"> scalable</strong> websites for startups and
+    individuals. Let’s bring your ideas to life! ✨
+  </motion.p>
 
-            {/* Action Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 mb-8"
-            >
-              <div className="pointer-events-auto">
-              <Button 
-                className="btn-gradient hover-lift hover-glow font-semibold" 
-                size="lg"
-                onClick={() => window.open('/resume.pdf', '_blank')}
-              >
-                <Download className="mr-2" size={20} />
-                View Resume
-              </Button>
-              </div>
-              <div className="pointer-events-auto">
-              <Button 
-                variant="outline" 
-                className="btn-ghost hover-lift hover-glow font-semibold border-2" 
-                size="lg"
-                onClick={() => document.getElementById('hire')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                <MessageCircle className="mr-2" size={20} />
-                Hire Me
-              </Button>
-              </div>
-            </motion.div>
+  {/* Action Buttons */}
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.6, duration: 0.8 }}
+    className="flex flex-col sm:flex-row gap-4 mb-8"
+  >
+    <div className="pointer-events-auto">
+      <Button
+        className="btn-gradient hover-lift hover-glow font-semibold"
+        size="lg"
+        onClick={() => window.open("/resume.pdf", "_blank")}
+        aria-label="View Resume of Shreya Singh"
+      >
+        <Download className="mr-2" size={20} />
+        View Resume
+      </Button>
+    </div>
+    <div className="pointer-events-auto">
+      <Button
+        variant="outline"
+        className="btn-ghost hover-lift hover-glow font-semibold border-2"
+        size="lg"
+        onClick={() =>
+          document.getElementById("hire")?.scrollIntoView({ behavior: "smooth" })
+        }
+        aria-label="Hire Shreya Singh"
+      >
+        <MessageCircle className="mr-2" size={20} />
+        Hire Me
+      </Button>
+    </div>
+  </motion.div>
 
-            {/* Social Links */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
-              className="flex gap-4"
-            >
-              <div className="pointer-events-auto">
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                className="hover-scale hover-glow rounded-full bg-primary/10 hover:bg-primary/20"
-                onClick={() => window.open('https://github.com/shreya', '_blank')}
-              >
-                <Github size={24} />
-              </Button>
-              </div>
-              <div className="pointer-events-auto">
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                className="hover-scale hover-glow rounded-full bg-secondary/10 hover:bg-secondary/20"
-                onClick={() => window.open('www.linkedin.com/in/shreya-singh-a14868303', '_blank')}
-              >
-                <Linkedin size={24} />
-              </Button>
-              </div>
-              <div className="pointer-events-auto">
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                className="hover-scale hover-glow rounded-full bg-primary/10 hover:bg-primary/20"
-                onClick={() => window.open('https://wa.me/+918279948895', '_blank')}
-              >
-                <Phone size={24} />
-              </Button>
-              </div>
-            </motion.div>
-          </motion.div>
+  {/* Social Links */}
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.8, duration: 0.8 }}
+    className="flex gap-4"
+    aria-label="Social media links"
+  >
+    <div className="pointer-events-auto">
+      <Button
+        variant="ghost"
+        size="icon"
+        className="hover-scale hover-glow rounded-full bg-primary/10 hover:bg-primary/20"
+        asChild
+      >
+        <a
+          href="https://github.com/shreya"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub Profile"
+        >
+          <Github size={24} />
+        </a>
+      </Button>
+    </div>
 
-          {/* Right Content - Video Placeholder */}
-          {/* <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="relative"
-           >
-            <div className="relative rounded-3xl overflow-hidden shadow-glow">
-              <div className="aspect-video bg-gradient-primary flex items-center justify-center text-primary-foreground">
-                <div className="text-center">
-                  <motion.div
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    className="w-20 h-20 bg-primary-foreground/20 rounded-full flex items-center justify-center mx-auto mb-4"
-                  >
-                    <div className="w-0 h-0 border-l-8 border-r-0 border-t-6 border-b-6 border-l-primary-foreground border-t-transparent border-b-transparent ml-1"></div>
-                  </motion.div>
-                  <p className="text-lg font-medium">
-                    AI-Generated Video Intro
-                  </p>
-                  <p className="text-sm opacity-80">Coming Soon!</p>
-                </div>
-              </div>
-            </div>
+    <div className="pointer-events-auto">
+      <Button
+        variant="ghost"
+        size="icon"
+        className="hover-scale hover-glow rounded-full bg-secondary/10 hover:bg-secondary/20"
+        asChild
+      >
+        <a
+          href="https://www.linkedin.com/in/shreya-singh-a14868303"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn Profile"
+        >
+          <Linkedin size={24} />
+        </a>
+      </Button>
+    </div>
 
-            {/* Floating elements */}
-            {/* <motion.div
-              animate={{ y: [0, -20, 0] }}
-              transition={{ duration: 3, repeat: Infinity }}
-              className="absolute -top-4 -left-4 w-20 h-20 bg-secondary/20 rounded-full blur-xl"
-            />
-            <motion.div
-              animate={{ y: [0, 20, 0] }}
-              transition={{ duration: 4, repeat: Infinity }}
-              className="absolute -bottom-4 -right-4 w-16 h-16 bg-primary/20 rounded-full blur-xl"
-            />
-          </motion.div> */} 
+    <div className="pointer-events-auto">
+      <Button
+        variant="ghost"
+        size="icon"
+        className="hover-scale hover-glow rounded-full bg-primary/10 hover:bg-primary/20"
+        asChild
+      >
+        <a
+          href="https://wa.me/+918279948895"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="WhatsApp Contact"
+        >
+          <Phone size={24} />
+        </a>
+      </Button>
+    </div>
+  </motion.div>
+</motion.div>
+
+
         </div>
       </div>
       

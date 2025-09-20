@@ -35,21 +35,21 @@ const Contact = () => {
       icon: Github,
       title: "GitHub",
       value: "@shreyasingh",
-      href: "https://github.com/shreyasingh",
+      href: "https://github.com/Shreya-meaw",
       color: "text-foreground"
     },
     {
       icon: Linkedin,
       title: "LinkedIn",
       value: "Shreya Singh",
-      href: "https://linkedin.com/in/shreya-singh-dev",
+      href: "https://www.linkedin.com/in/shreya-singh-a14868303/",
       color: "text-sky-600"
     },
     {
       icon: MessageCircle,
-      title: "Discord",
-      value: "shreya_dev#1234",
-      href: "#",
+      title: "msg",
+      value: "shreya",
+      href: "https://wa.me/8279948895",
       color: "text-indigo-500"
     }
   ];
@@ -154,18 +154,19 @@ const Contact = () => {
             <Card className="bg-gradient-to-br from-primary/10 to-accent/10 backdrop-blur-md border border-border/40 rounded-2xl shadow-lg hover:shadow-xl transition-all max-w-md mx-auto">
               <CardContent className="p-10">
                 <Download className="mx-auto mb-4 text-primary" size={48} />
-                <h3 className="text-xl font-bold mb-2">Download Resume</h3>
+                <h3 className="text-xl font-bold mb-2">View Resume</h3>
                 <p className="text-muted-foreground mb-6">
                   Get a detailed overview of my skills and experience
                 </p>
-                <Button
-                  className="bg-gradient-to-r from-primary to-indigo-500 text-white rounded-full px-8 py-2 font-semibold shadow hover:scale-105 transition-all"
-                  size="lg"
-                  onClick={() => window.open("/resume.pdf", "_blank")}
-                >
-                  <Download className="mr-2" size={16} />
-                  Download PDF
-                </Button>
+             <Button
+  className="bg-gradient-to-r from-primary to-indigo-500 text-white rounded-full px-8 py-2 font-semibold shadow hover:scale-105 transition-all"
+  size="lg"
+  onClick={() => window.open("https://docs.google.com/document/d/14fe4fa38hTpc0UFlq_M2Wx7mQhMpSVpp/edit?usp=sharing&ouid=117596840770019124674&rtpof=true&sd=true", "_blank")}
+>
+  <Download className="mr-2" size={16} />
+  View Resume
+</Button>
+
               </CardContent>
             </Card>
           </motion.div>
