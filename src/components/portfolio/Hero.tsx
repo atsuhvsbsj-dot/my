@@ -104,7 +104,7 @@ const Hero = () => {
       <Button
         className="btn-gradient hover-lift hover-glow font-semibold"
         size="lg"
-        onClick={() => window.open("/resume.pdf", "_blank")}
+        onClick={() => window.open("https://docs.google.com/document/d/14fe4fa38hTpc0UFlq_M2Wx7mQhMpSVpp/edit?usp=sharing&ouid=117596840770019124674&rtpof=true&sd=true", "_blank")}
         aria-label="View Resume of Shreya Singh"
       >
         <Download className="mr-2" size={20} />
