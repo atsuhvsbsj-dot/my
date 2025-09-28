@@ -12,7 +12,7 @@ const Header = () => {
     { href: "#home", label: "Home" },
     { href: "#services", label: "Services" },
     { href: "#about", label: "About Me" },
-    { href: "#projects", label: "Projects" },
+    { href: "#projects", label: "Highlights" },
     { href: "#testimonials", label: "Reviews" },
     { href: "#pricing", label: "Pricing" },
     { href: "#hire", label: "Hire Me" },
@@ -26,7 +26,7 @@ const Header = () => {
     }
   };
 
-  // ✅ Prevent background scroll when menu is open
+  // Prevent background scroll when menu is open
   useEffect(() => {
     if (isOpen) {
       document.body.classList.add("no-scroll");

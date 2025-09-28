@@ -9,11 +9,11 @@ const Footer = () => {
     { href: "#home", label: "Home" },
     { href: "#services", label: "Our Services" },
     { href: "#about", label: "About Me" },
-    { href: "#projects", label: "Projects Portfolio" },
+    { href: "#projects", label: "Highlights" },
     { href: "#testimonials", label: "Client Reviews" },
     { href: "#pricing", label: "Pricing Plans" },
     { href: "#hire", label: "Hire Me" },
-    { href: "#blog", label: "Web Development Blog" },
+    { href: "#blog", label: "Blog" },
   ];
 
   const services = [

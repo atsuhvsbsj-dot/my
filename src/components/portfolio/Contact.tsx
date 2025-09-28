@@ -72,7 +72,7 @@ const Contact = () => {
   <span>
     Ready to start your project? Reach out through any of the methods below
   </span>
-  <MessageCircle className="text-primary w-5 h-5" aria-hidden="true" />
+  {/* <MessageCircle className="text-primary w-5 h-5" aria-hidden="true" /> */}
 </p>
 
         </motion.div>
