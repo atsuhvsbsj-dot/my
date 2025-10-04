@@ -19,10 +19,18 @@ const Header = () => {
     { href: "#blog", label: "Blog" },
   ];
 
+  // ✅ Scroll with offset for fixed header
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
+      const headerOffset = 80; // adjust based on header height
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
     }
   };
 
@@ -50,9 +58,10 @@ const Header = () => {
           onClick={(e) => {
             e.preventDefault();
             scrollToSection("#home");
+            setIsOpen(false);
           }}
           whileHover={{ scale: 1.05 }}
-          className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white font-sans uppercase"
+          className="text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white font-sans uppercase"
           aria-label="Shreya Singh Portfolio Home"
         >
           {"Shreya Singh"}
@@ -119,8 +128,10 @@ const Header = () => {
               href={item.href}
               onClick={(e) => {
                 e.preventDefault();
-                scrollToSection(item.href);
-                setIsOpen(false);
+                setIsOpen(false); // close menu first
+                setTimeout(() => {
+                  scrollToSection(item.href); // then scroll
+                }, 300); // wait for animation
               }}
               whileTap={{ scale: 0.95 }}
               className="block py-2 px-4 text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors cursor-pointer w-full text-center"
