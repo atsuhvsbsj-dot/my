@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ExternalLink, Github, Briefcase, ArrowRight } from 'lucide-react';
+import { ExternalLink, Github, Briefcase, Award, Code } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { supabase, type Project, type Experience } from '@/lib/supabase';
+import Header from '@/components/portfolio/Header';
+import Footer from '@/components/portfolio/Footer';
 
-const ProjectsHighlights = () => {
+const AllProjects = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [experiences, setExperiences] = useState<Experience[]>([]);
   const [loading, setLoading] = useState(true);
@@ -18,15 +20,11 @@ const ProjectsHighlights = () => {
         supabase
           .from('projects')
           .select('*')
-          .eq('is_featured', true)
-          .order('display_order', { ascending: true })
-          .limit(2),
+          .order('display_order', { ascending: true }),
         supabase
           .from('experiences')
           .select('*')
-          .eq('is_featured', true)
-          .order('display_order', { ascending: true })
-          .limit(2),
+          .order('display_order', { ascending: true }),
       ]);
 
       if (projectsResult.data) setProjects(projectsResult.data);
@@ -52,6 +50,32 @@ const ProjectsHighlights = () => {
             className="w-full h-48 object-cover group-hover:scale-105 transition-smooth"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-smooth" />
+          <div className="absolute bottom-4 left-4 right-4 transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-smooth">
+            <div className="flex gap-2">
+              {project.github_url && (
+                <Button
+                  size="sm"
+                  variant="secondary"
+                  onClick={() => window.open(project.github_url!, '_blank')}
+                  className="hover-glow"
+                >
+                  <Github size={16} className="mr-1" />
+                  Code
+                </Button>
+              )}
+              {project.project_url && (
+                <Button
+                  size="sm"
+                  variant="secondary"
+                  onClick={() => window.open(project.project_url!, '_blank')}
+                  className="hover-glow"
+                >
+                  <ExternalLink size={16} className="mr-1" />
+                  Demo
+                </Button>
+              )}
+            </div>
+          </div>
         </div>
 
         <CardContent className="p-6">
@@ -167,123 +191,70 @@ const ProjectsHighlights = () => {
     );
   };
 
-  if (loading) {
-    return (
-      <>
-        <div className="w-full overflow-hidden leading-[0] relative -mt-1">
-          <svg
-            className="w-full h-[50px] md:h-[60px]"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1000 100"
-            preserveAspectRatio="none"
-          >
-            <path
-              fill="#457D84"
-              d="M929 38c-12-5-24-8-36-8l-10 8c-22-9-42-18-72-18l-28 25H217l-28-25c-31 0-51 10-72 18l-9-8c-13 0-25 3-37 8L40 50l31 13c12 5 24 7 37 7l9-8c22 9 42 18 72 18l28-25h566l28 25c31 0 51-10 72-18l10 8c12 0 24-2 36-7l31-13-31-12Z"
-            />
-          </svg>
-        </div>
-        <section id="projects" className="py-20 bg-muted/30">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold mb-4">Projects & Experience</h2>
-              <p className="text-xl text-muted-foreground">Loading...</p>
-            </div>
-          </div>
-        </section>
-      </>
-    );
-  }
-
   return (
-    <>
-      <div className="w-full overflow-hidden leading-[0] relative -mt-1">
-        <svg
-          className="w-full h-[50px] md:h-[60px]"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1000 100"
-          preserveAspectRatio="none"
-        >
-          <path
-            fill="#457D84"
-            d="M929 38c-12-5-24-8-36-8l-10 8c-22-9-42-18-72-18l-28 25H217l-28-25c-31 0-51 10-72 18l-9-8c-13 0-25 3-37 8L40 50l31 13c12 5 24 7 37 7l9-8c22 9 42 18 72 18l28-25h566l28 25c31 0 51-10 72-18l10 8c12 0 24-2 36-7l31-13-31-12Z"
-          />
-        </svg>
-      </div>
-      <section id="projects" className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <div className="flex items-center justify-center gap-4 mb-4">
-              <h2 className="text-4xl font-bold">Projects & Experience</h2>
-              <Link to="/projects">
-                <Button
-                  size="icon"
-                  variant="ghost"
-                  className="hover-glow rounded-full"
-                  aria-label="View all projects and experience"
-                >
-                  <ArrowRight size={24} />
-                </Button>
-              </Link>
-            </div>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              A showcase of my featured work and professional journey
-            </p>
-          </motion.div>
+    <div className="min-h-screen bg-background">
+      <Header />
 
-          {projects.length > 0 && (
-            <div className="mb-16">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="flex items-center justify-between mb-8"
-              >
-                <div className="flex items-center">
-                  <Briefcase className="mr-3 text-primary" size={24} />
-                  <h3 className="text-2xl font-bold">Featured Projects</h3>
-                </div>
-              </motion.div>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {projects.map((project) => (
-                  <ProjectCard key={project.id} project={project} />
-                ))}
-              </div>
-            </div>
-          )}
-
-          {experiences.length > 0 && (
-            <div>
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="flex items-center justify-between mb-8"
-              >
-                <div className="flex items-center">
-                  <Briefcase className="mr-3 text-primary" size={24} />
-                  <h3 className="text-2xl font-bold">Professional Experience</h3>
-                </div>
-              </motion.div>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {experiences.map((experience) => (
-                  <ExperienceCard key={experience.id} experience={experience} />
-                ))}
-              </div>
-            </div>
-          )}
+      <main className="container mx-auto px-4 py-24">
+        <div className="mb-12 text-center">
+          <h1 className="text-5xl font-bold mb-4">All Projects & Experience</h1>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            A comprehensive showcase of my work, experience, and professional journey
+          </p>
         </div>
-      </section>
-    </>
+
+        {loading ? (
+          <div className="text-center py-20">
+            <p className="text-muted-foreground text-xl">Loading...</p>
+          </div>
+        ) : (
+          <>
+            {projects.length > 0 && (
+              <div className="mb-16">
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="flex items-center mb-8"
+                >
+                  <Briefcase className="mr-3 text-primary" size={24} />
+                  <h2 className="text-3xl font-bold">Projects</h2>
+                </motion.div>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {projects.map((project) => (
+                    <ProjectCard key={project.id} project={project} />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {experiences.length > 0 && (
+              <div>
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="flex items-center mb-8"
+                >
+                  <Code className="mr-3 text-primary" size={24} />
+                  <h2 className="text-3xl font-bold">Professional Experience</h2>
+                </motion.div>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {experiences.map((experience) => (
+                    <ExperienceCard key={experience.id} experience={experience} />
+                  ))}
+                </div>
+              </div>
+            )}
+          </>
+        )}
+      </main>
+
+      <Footer />
+    </div>
   );
 };
 
-export default ProjectsHighlights;
+export default AllProjects;

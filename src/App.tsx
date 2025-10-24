@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Blogs from "./pages/Blogs";
 import BlogDetail from "./pages/BlogDetail";
+import AllProjects from "./pages/AllProjects";
 import ProjectDetail from "./pages/ProjectDetail";
 import ExperienceDetail from "./pages/ExperienceDetail";
 import NotFound from "./pages/NotFound";
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blog/:slug" element={<BlogDetail />} />
+          <Route path="/projects" element={<AllProjects />} />
           <Route path="/project/:slug" element={<ProjectDetail />} />
           <Route path="/experience/:slug" element={<ExperienceDetail />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
