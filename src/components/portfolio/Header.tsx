@@ -3,27 +3,28 @@ import { motion } from "framer-motion";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
+  const location = useLocation();
 
   const navItems = [
-    { href: "#home", label: "Home" },
-    { href: "#services", label: "Services" },
-    { href: "#about", label: "About Me" },
-    { href: "#projects", label: "Highlights" },
-    { href: "#testimonials", label: "Reviews" },
-    { href: "#pricing", label: "Pricing" },
-    { href: "#hire", label: "Hire Me" },
-    { href: "#blog", label: "Blog" },
+    { href: "#home", label: "Home", isRoute: false },
+    { href: "#services", label: "Services", isRoute: false },
+    { href: "#about", label: "About Me", isRoute: false },
+    { href: "#projects", label: "Highlights", isRoute: false },
+    { href: "#testimonials", label: "Reviews", isRoute: false },
+    { href: "#pricing", label: "Pricing", isRoute: false },
+    { href: "#hire", label: "Hire Me", isRoute: false },
+    { href: "/blogs", label: "Blog", isRoute: true },
   ];
 
-  // ✅ Scroll with offset for fixed header
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      const headerOffset = 80; // adjust based on header height
+      const headerOffset = 80;
       const elementPosition = element.getBoundingClientRect().top + window.scrollY;
       const offsetPosition = elementPosition - headerOffset;
 
@@ -70,20 +71,37 @@ const Header = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8" aria-label="Primary Navigation">
           {navItems.map((item) => (
-            <motion.a
-              key={item.href}
-              href={item.href}
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection(item.href);
-              }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="relative group font-medium text-gray-800 dark:text-gray-200 transition-colors duration-300 cursor-pointer"
-            >
-              {item.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-            </motion.a>
+            item.isRoute ? (
+              <Link key={item.href} to={item.href}>
+                <motion.span
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="relative group font-medium text-gray-800 dark:text-gray-200 transition-colors duration-300 cursor-pointer inline-block"
+                >
+                  {item.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                </motion.span>
+              </Link>
+            ) : (
+              <motion.a
+                key={item.href}
+                href={item.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (location.pathname !== '/') {
+                    window.location.href = '/' + item.href;
+                  } else {
+                    scrollToSection(item.href);
+                  }
+                }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="relative group font-medium text-gray-800 dark:text-gray-200 transition-colors duration-300 cursor-pointer"
+              >
+                {item.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+              </motion.a>
+            )
           ))}
         </nav>
 
@@ -123,21 +141,37 @@ const Header = () => {
           aria-label="Mobile Navigation"
         >
           {navItems.map((item) => (
-            <motion.a
-              key={item.href}
-              href={item.href}
-              onClick={(e) => {
-                e.preventDefault();
-                setIsOpen(false); // close menu first
-                setTimeout(() => {
-                  scrollToSection(item.href); // then scroll
-                }, 300); // wait for animation
-              }}
-              whileTap={{ scale: 0.95 }}
-              className="block py-2 px-4 text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors cursor-pointer w-full text-center"
-            >
-              {item.label}
-            </motion.a>
+            item.isRoute ? (
+              <Link key={item.href} to={item.href} className="w-full">
+                <motion.span
+                  onClick={() => setIsOpen(false)}
+                  whileTap={{ scale: 0.95 }}
+                  className="block py-2 px-4 text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors cursor-pointer w-full text-center"
+                >
+                  {item.label}
+                </motion.span>
+              </Link>
+            ) : (
+              <motion.a
+                key={item.href}
+                href={item.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsOpen(false);
+                  setTimeout(() => {
+                    if (location.pathname !== '/') {
+                      window.location.href = '/' + item.href;
+                    } else {
+                      scrollToSection(item.href);
+                    }
+                  }, 300);
+                }}
+                whileTap={{ scale: 0.95 }}
+                className="block py-2 px-4 text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors cursor-pointer w-full text-center"
+              >
+                {item.label}
+              </motion.a>
+            )
           ))}
         </motion.nav>
       )}
