@@ -4,6 +4,13 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
+import image1 from "@/assets/image1.jpeg";
+import image2 from "@/assets/image2.jpeg";
+import image3 from "@/assets/image3.jpeg";
+import image4 from "@/assets/image4.jpeg";
+import image5 from "@/assets/image5.jpeg";
+import image6 from "@/assets/image6.jpeg";
+
 const Projects = () => {
   const clientProjects = [
     {
@@ -12,7 +19,7 @@ const Projects = () => {
       stack: ["React", "Node.js", "MongoDB", "Stripe", "JWT"],
       summary: "Built a complete e-commerce solution with payment integration for a fashion startup. Achieved 40% conversion rate improvement.",
       problemSolved: "Solved slow loading times and poor mobile experience, resulting in 60% increase in mobile sales.",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop",
+      image: image4,
       github: "https://github.com/shreya/shopeasy",
       demo: "https://shopeasy-demo.netlify.app"
     },
@@ -22,9 +29,9 @@ const Projects = () => {
       stack: ["React", "Firebase", "Material-UI", "PWA"],
       summary: "Modern restaurant ordering system with real-time updates and table management for local restaurant chain.",
       problemSolved: "Digitized manual ordering process, reducing order errors by 85% and improving customer satisfaction.",
-      image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=300&fit=crop",
+      image: image4,
       github: "https://github.com/shreya/spice-garden",
-      demo: "https://spicegarden-app.com"
+      demo: "https://stellular-twilight-0b29ee.netlify.app/"
     },
     {
       title: "AfriTech Portfolio Website",
@@ -32,9 +39,9 @@ const Projects = () => {
       stack: ["React", "Next.js", "Sanity CMS", "Tailwind"],
       summary: "Portfolio website for African tech startup showcasing their innovative solutions across the continent.",
       problemSolved: "Created modern web presence that attracted 3 major investors and secured Series A funding.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop",
+      image:image4,
       github: "https://github.com/shreya/afritech-portfolio",
-      demo: "https://afritech-solutions.com"
+      demo: "https://edu-connect-inky.vercel.app/"
     }
   ];
 
@@ -45,10 +52,10 @@ const Projects = () => {
       stack: ["React Native", "Node.js", "MySQL", "Machine Learning"],
       summary: "AI-powered health monitoring app that won 2nd place in National Healthcare Innovation Hackathon 2024.",
       problemSolved: "Created predictive health monitoring using wearable device data to prevent health emergencies.",
-      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop",
+      image: image4,
       award: "🏆 2nd Place",
-      github: "https://github.com/shreya/healthtrack-pro",
-      demo: "https://healthtrack-demo.app"
+      github: "https://www.figma.com/design/EXLxo1TG4yW8q7SMf22UyO/solar_project?node-id=0-1&t=gpcZGxOkzCRdkI0q-1",
+      demo: "https://www.figma.com/proto/EXLxo1TG4yW8q7SMf22UyO/solar_project?node-id=25-4&p=f&t=gpcZGxOkzCRdkI0q-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=25%3A4"
     },
     {
       title: "EcoTrace Carbon Tracker",
@@ -56,10 +63,10 @@ const Projects = () => {
       stack: ["Vue.js", "Express", "PostgreSQL", "Chart.js"],
       summary: "Carbon footprint tracking app for individuals and businesses. Finalist in Green Tech Challenge 2024.",
       problemSolved: "Simplified carbon tracking with automated calculations, helping users reduce emissions by 30%.",
-      image: "https://images.unsplash.com/photo-1569163139394-de4e4f43e4e3?w=400&h=300&fit=crop",
+      image: image5,
       award: "🌱 Finalist",
-      github: "https://github.com/shreya/ecotrace",
-      demo: "https://ecotrace-app.com"
+      github: "https://www.figma.com/design/5QMyoT6I5RffghqIFfJFTP/pg-dekho?node-id=8-71&t=gpcZGxOkzCRdkI0q-1",
+      demo: "https://www.figma.com/proto/5QMyoT6I5RffghqIFfJFTP/pg-dekho?node-id=8-72&p=f&t=gpcZGxOkzCRdkI0q-0&scaling=min-zoom&content-scaling=fixed&page-id=8%3A71&starting-point-node-id=8%3A72"
     }
   ];
 
@@ -71,9 +78,9 @@ const Projects = () => {
       summary: "Built comprehensive analytics dashboard for startup metrics, KPIs, and business intelligence at TechStart Inc.",
       problemSolved: "Replaced manual reporting with automated dashboards, saving 20 hours/week of manual work.",
       company: "TechStart Inc.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop",
+      image: image3,
       github: "https://github.com/usergd26/waaa-web/tree/develop",
-      demo: "https://waaa-app-coral.vercel.app/"
+      demo: "https://www.waaa.in/"
     },
     {
       title: "EduLearn Learning Platform",
@@ -82,7 +89,7 @@ const Projects = () => {
       summary: "Developed backend systems for online learning platform serving 10,000+ students across universities.",
       problemSolved: "Optimized database queries and implemented caching, improving page load times by 70%.",
       company: "EduTech Solutions",
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop",
+      image: image6,
       github: "https://github.com/WAAA-IT-Solution/collab-web",
       demo: "https://stellular-twilight-0b29ee.netlify.app/"
     }
