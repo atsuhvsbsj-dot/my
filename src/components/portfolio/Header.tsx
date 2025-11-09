@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -7,23 +8,25 @@ import { Button } from "@/components/ui/button";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
   const navItems = [
-    { href: "#home", label: "Home" },
-    { href: "#services", label: "Services" },
-    { href: "#about", label: "About Me" },
-    { href: "#projects", label: "Highlights" },
-    { href: "#testimonials", label: "Reviews" },
-    { href: "#pricing", label: "Pricing" },
-    { href: "#hire", label: "Hire Me" },
-    { href: "#blog", label: "Blog" },
+    { href: "#home", label: "Home", action: "scroll" },
+    { href: "#services", label: "Services", action: "scroll" },
+    { href: "#about", label: "About Me", action: "scroll" },
+    { href: "#projects", label: "Highlights", action: "scroll" },
+    { href: "#testimonials", label: "Reviews", action: "scroll" },
+    { href: "#pricing", label: "Pricing", action: "scroll" },
+    { href: "#hire", label: "Hire Me", action: "scroll" },
+    { href: "/blogs", label: "Blog", action: "navigate" },
   ];
 
-  // ✅ Scroll with offset for fixed header
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      const headerOffset = 80; // adjust based on header height
+      const headerOffset = 80;
       const elementPosition = element.getBoundingClientRect().top + window.scrollY;
       const offsetPosition = elementPosition - headerOffset;
 
@@ -31,6 +34,20 @@ const Header = () => {
         top: offsetPosition,
         behavior: "smooth",
       });
+    }
+  };
+
+  const handleNavClick = (item: any) => {
+    setIsOpen(false);
+    if (item.action === "navigate") {
+      navigate(item.href);
+    } else if (item.action === "scroll") {
+      if (isHomePage) {
+        scrollToSection(item.href);
+      } else {
+        navigate("/");
+        setTimeout(() => scrollToSection(item.href), 300);
+      }
     }
   };
 
@@ -53,37 +70,28 @@ const Header = () => {
     >
       <div className="max-w-screen-xl mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
-        <motion.a
-          href="#home"
-          onClick={(e) => {
-            e.preventDefault();
-            scrollToSection("#home");
-            setIsOpen(false);
-          }}
+        <motion.button
+          onClick={() => navigate("/")}
           whileHover={{ scale: 1.05 }}
           className="text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white font-sans uppercase"
           aria-label="Shreya Singh Portfolio Home"
         >
           {"Shreya Singh"}
-        </motion.a>
+        </motion.button>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8" aria-label="Primary Navigation">
           {navItems.map((item) => (
-            <motion.a
+            <motion.button
               key={item.href}
-              href={item.href}
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection(item.href);
-              }}
+              onClick={() => handleNavClick(item)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="relative group font-medium text-gray-800 dark:text-gray-200 transition-colors duration-300 cursor-pointer"
             >
               {item.label}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-            </motion.a>
+            </motion.button>
           ))}
         </nav>
 
@@ -123,21 +131,14 @@ const Header = () => {
           aria-label="Mobile Navigation"
         >
           {navItems.map((item) => (
-            <motion.a
+            <motion.button
               key={item.href}
-              href={item.href}
-              onClick={(e) => {
-                e.preventDefault();
-                setIsOpen(false); // close menu first
-                setTimeout(() => {
-                  scrollToSection(item.href); // then scroll
-                }, 300); // wait for animation
-              }}
+              onClick={() => handleNavClick(item)}
               whileTap={{ scale: 0.95 }}
               className="block py-2 px-4 text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors cursor-pointer w-full text-center"
             >
               {item.label}
-            </motion.a>
+            </motion.button>
           ))}
         </motion.nav>
       )}
